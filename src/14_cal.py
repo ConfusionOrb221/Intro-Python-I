@@ -28,6 +28,19 @@ it should use today’s date to get the month and year.
 """
 
 import sys
-import calendar
+import calendar 
 from datetime import datetime
 
+def create_calender(*args):
+  today = datetime.today();
+  c = calendar.TextCalendar()
+  if len(args) == 1: 
+    return c.formatmonth(today.year, today.month)
+  elif len(args) == 2: 
+    return c.formatmonth(today.year, int(args[1]))
+  elif len(args) == 3: 
+    return c.formatmonth(int(args[2]), int(args[1]))
+  else:
+    return "Expects args of none, month, or month year"
+
+print(create_calender(*sys.argv))
